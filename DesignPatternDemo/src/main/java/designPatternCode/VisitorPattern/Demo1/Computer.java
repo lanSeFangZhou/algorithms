@@ -1,0 +1,17 @@
+package designPatternCode.VisitorPattern.Demo1;
+
+public class Computer implements ComputerPart {
+    ComputerPart[] parts;
+
+    public Computer() {
+        parts = new ComputerPart[]{new Mouse(), new KeyBoard(), new Monitor()};
+    }
+
+    public void accept(ComputerPartVisitor computerPartVisitor) {
+        for (int i = 0; i < parts.length; i++) {
+            parts[i].accept(computerPartVisitor);
+        }
+        computerPartVisitor.visit(this);
+    }
+
+}
